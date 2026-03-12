@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Pacific B2B Travel Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --brand-blue: #0ea5e9;
+            --brand-green: #22c55e;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Container & Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline-blue {
+            border: 2px solid var(--brand-blue);
+            color: var(--brand-blue);
+            background: transparent;
+        }
+
+        .btn-outline-blue:hover {
+            background: var(--brand-blue);
+            color: var(--text-main);
+        }
+
+        .btn-green {
+            background-color: var(--brand-green);
+            color: var(--text-main);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-blue {
+            background-color: var(--brand-blue);
+            color: var(--text-main);
+        }
+        
+        .btn-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        /* --- Content sections --- */
+        .page-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #b0b3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-item {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .section-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .features-list li i {
+            color: var(--brand-green);
+            font-size: 1.1rem;
+        }
+
+        .image-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .image-box img {
+            width: 100%;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.02);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, rgba(146, 193, 63, 0.1), transparent);
+            border: 1px solid var(--brand-green);
+            padding: 80px;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-options {
+            display: grid;
+            gap: 20px;
+        }
+
+        .register-option {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .register-option:hover {
+            border-color: var(--brand-green);
+            background: rgba(170, 255, 0, 0.05);
+            transform: translateX(10px);
+        }
+
+        .register-option i {
+            font-size: 2rem;
+            color: var(--brand-green);
+        }
+
+        footer {
+            padding: 60px 0 20px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+
+            .section-item,
+            .section-item:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-card {
+                padding: 40px 20px;
+            }
+
+            .cta-card h2 {
+                font-size: 2rem;
+            }
+
+            .action-btns {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-texture"></div>
+
+    <div class="container">
+        <nav class="container">
+        <a href="index.html" class="logo"><img src="assets/LogoPBB-1.png" alt="Pacific Bedbank"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="hotels.html">For Hotels</a>
+            <a href="wholesalers.html">For Wholesalers</a>
+            <a href="technology.html">Platform</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn-outline-blue login-trigger" style="margin-left: 30px;">PARTNER LOGIN</a>
+        </div>
+    </nav>
+
+        <header class="page-header">
+            <h1>Specialized Travel Services</h1>
+            <p>Go beyond the platform with our expert-led services designed to elevate your brand and digital presence
+                in the Pacific market.</p>
+        </header>
+
+        <!-- Digital Marketing -->
+        <section class="section-item">
+            <div class="info">
+                <h2>Digital Marketing</h2>
+                <p>Pacific Bedbank offers expert digital marketing services tailored for the hospitality, banking, and
+                    government sectors.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Improve online presence and reach target audiences
+                        effectively</li>
+                    <li><i class="fas fa-check-circle"></i> Exceptional after-support and lightning-fast turnaround time
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Custom solutions for hospitality, airlines, and niche
+                        industries</li>
+                    <li><i class="fas fa-check-circle"></i> Expert team committed to elevating your brand's digital
+                        reach</li>
+                </ul>
+                <div class="action-btns">
+                    <a href="contact.html" class="btn btn-green">Request a Strategy</a>
+                    <a href="about.html" class="btn btn-outline-blue">Meet the Experts</a>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="assets/digital-marketing.png" alt="Digital Marketing Strategy">
+            </div>
+        </section>
+
+        <!-- Custom Web Development -->
+        <section class="section-item">
+            <div class="info">
+                <h2>Custom Web Development</h2>
+                <p>Our team of experienced developers specializes in creating high-quality, responsive web solutions
+                    that solve complex business challenges.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Advanced builds using Django, React, Webflow, and WordPress
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Optimized for extreme performance and seamless user
+                        experience</li>
+                    <li><i class="fas fa-check-circle"></i> From simple static sites to enterprise-level web
+                        applications</li>
+                    <li><i class="fas fa-check-circle"></i> Bespoke architecture designed for regional connectivity
+                        needs</li>
+                </ul>
+                <div class="action-btns">
+                    <a href="contact.html" class="btn btn-green">Start Your Project</a>
+                    <a href="products.html" class="btn btn-outline-blue">View Platform</a>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="assets/web-dev.png" alt="Custom Web App Development">
+            </div>
+        </section>
+
+        <!-- Online Payment Integration -->
+        <section class="section-item">
+            <div class="info">
+                <h2>Online Payment Integration</h2>
+                <p>Modernize your business with secure, local and international payment gateway integrations tailored
+                    for the Pacific market.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Integration with major regional banks and global gateways
+                        (Stripe, ANZ, BSP)</li>
+                    <li><i class="fas fa-check-circle"></i> Multi-currency support for local island currencies</li>
+                    <li><i class="fas fa-check-circle"></i> PCI-compliant security standards to protect your
+                        transactions</li>
+                    <li><i class="fas fa-check-circle"></i> Seamless checkout experience for both mobile and desktop
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Real-time payment confirmation and reporting</li>
+                </ul>
+                <div class="action-btns">
+                    <a href="contact.html" class="btn btn-green">Contact Sales</a>
+                    <a href="products.html" class="btn btn-outline-blue">Integrate Now</a>
+                </div>
+            </div>
+            <div class="image-box"
+                style="display: flex; justify-content: center; align-items: center; background: rgba(146, 193, 63, 0.05); border-radius: 24px; min-height: 300px;">
+                <i class="fas fa-credit-card" style="font-size: 10rem; color: var(--brand-green); opacity: 0.8;"></i>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-card">
+                <h2>Ready to elevate your digital presence?</h2>
+                <p style="margin-bottom: 40px; font-size: 1.2rem; color: var(--text-muted);">Partner with the Pacific's
+                    tech leaders to build, market, and scale your business.</p>
+                <a href="contact.html" class="btn btn-green" style="font-size: 1.1rem; padding: 15px 40px;">Get a Free
+                    Consultation</a>
+            </div>
+        </section>
+
+        <footer>
+        <div class="container footer-layout">
+            <div class="footer-links">
+                <a href="#">Legal</a>
+                <a href="products.html">Features</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-logo">
+                Member of GBB Network
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeModal"><i class="fas fa-times"></i></div>
+            <div class="modal-header">
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Join Pacific B2B</h2>
+                <p style="color: var(--text-muted);">Select your business type to get started</p>
+            </div>
+            <div class="register-options">
+                <a href="#" class="register-option">
+                    <i class="fas fa-user-tie"></i>
+                    <div class="option-text">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Register as an Agent</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Access exclusive inventory and manage
+                            bookings.</p>
+                    </div>
+                </a>
+                <a href="#" class="register-option">
+                    <i class="fas fa-hotel"></i>
+                    <div class="option-text">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Register as a Hotel</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">List your property and reach regional
+                            agents.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+        <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeLoginModal"><i class="fas fa-times"></i></div>
+            <div class="modal-header">
+                <h2>Partner Login</h2>
+                <p>Access your B2B account</p>
+            </div>
+            <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                    <label for="loginEmail" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Work Email / Username</label>
+                    <input type="email" id="loginEmail" placeholder="partner@company.com" required>
+                </div>
+                <div>
+                    <label for="loginPassword" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer;"><input type="checkbox" style="accent-color: var(--brand-blue);"> Remember Me</label>
+                    <a href="#" style="color: var(--brand-blue); text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-blue" style="width: 100%; padding: 15px; margin-top: 10px; font-size: 1.05rem;">Login to System</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const registerTriggers = document.querySelectorAll('.register-trigger');
+        const registerModal = document.getElementById('registerModal');
+        const closeModal = document.getElementById('closeModal');
+
+        const loginTriggers = document.querySelectorAll('.login-trigger');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+
+        const toggleModal = (modal, show) => {
+            if (show) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('active');
+                setTimeout(() => modal.style.display = 'none', 300);
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        registerTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleModal(registerModal, true);
+            });
+        });
+
+        loginTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleModal(loginModal, true);
+            });
+        });
+
+        closeModal.addEventListener('click', () => toggleModal(registerModal, false));
+        closeLoginModal.addEventListener('click', () => toggleModal(loginModal, false));
+
+        registerModal.addEventListener('click', (e) => {
+            if (e.target === registerModal) toggleModal(registerModal, false);
+        });
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) toggleModal(loginModal, false);
+        });
+    </script>
+</body>
+
+</html>

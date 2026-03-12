@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Login | Pacific B2B Travel Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #007ec4;
+            --brand-blue-transparent: rgba(0, 126, 196, 0.15);
+            --brand-blue-hover: #0066a2;
+            --brand-green: #8cc63f;
+            
+            --bg-main: #f8f9fa;
+            --bg-white: #ffffff;
+            
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--slate-800); 
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .login-layout {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* LEFT SIDE - VISUAL */
+        .login-visual {
+            display: none;
+            width: 50%;
+            background: linear-gradient(135deg, rgba(0, 126, 196, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .login-visual { display: flex; }
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: left;
+            max-width: 480px;
+        }
+
+        .visual-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .visual-content p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+        }
+
+        .glass-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-badge i { font-size: 1.5rem; color: var(--brand-green); }
+        .glass-badge div { display: flex; flex-direction: column; }
+        .glass-badge .title { font-weight: 700; font-size: 1rem; }
+        .glass-badge .sub { font-size: 0.875rem; color: rgba(255, 255, 255, 0.7); }
+
+        /* RIGHT SIDE - FORM */
+        .login-form-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: var(--bg-white);
+        }
+
+        @media (min-width: 1024px) {
+            .login-form-container { width: 50%; }
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .brand-logo {
+            display: block;
+            margin-bottom: 3rem;
+        }
+        
+        .brand-logo img {
+            height: 3rem;
+            width: auto;
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .form-header p {
+            color: var(--slate-500);
+            font-size: 1.125rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--slate-700);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i.fa-envelope, .input-wrapper i.fa-lock {
+            position: absolute;
+            left: 1rem;
+            color: var(--slate-400);
+            font-size: 1.125rem;
+            transition: color 0.3s ease;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            color: var(--slate-900);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .input-wrapper input::placeholder {
+            color: var(--slate-400);
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 4px var(--brand-blue-transparent);
+        }
+
+        .input-wrapper input:focus ~ i.fa-envelope, .input-wrapper input:focus ~ i.fa-lock {
+            color: var(--brand-blue);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--slate-400);
+            cursor: pointer;
+            padding: 0;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--slate-600);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1.125rem;
+            height: 1.125rem;
+            accent-color: var(--brand-blue);
+            cursor: pointer;
+        }
+
+        .checkbox-group span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--slate-600);
+        }
+
+        .forgot-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--brand-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .forgot-link:hover {
+            color: var(--brand-blue-hover);
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            background-color: var(--brand-blue);
+            color: white;
+            padding: 1.125rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--brand-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--slate-500);
+        }
+
+        .form-footer a {
+            font-weight: 600;
+            color: var(--slate-900);
+            text-decoration: none;
+            margin-left: 0.25rem;
+        }
+        
+        .form-footer a:hover {
+            color: var(--brand-blue);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-layout">
+        
+        <!-- Left Side: Visual -->
+        <div class="login-visual">
+            <div class="visual-content">
+                <h1>Seamless Distribution.<br>Global Reach.</h1>
+                <p>The unified B2B platform connecting top-tier Pacific properties with the world's leading travel agents.</p>
+                <div class="glass-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <span class="title">Secure Portal</span>
+                        <span class="sub">Advanced Encryption</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-form-container">
+            <div class="form-wrapper">
+                
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/LogoPBB-1.png" alt="Pacificbedbank Logo" onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/007ec4?text=Pacificbedbank&font=montserrat';">
+                </a>
+
+                <div class="form-header">
+                    <h2>Partner Login</h2>
+                    <p>Enter your credentials to access your account.</p>
+                </div>
+
+                <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+                    
+                    <div class="input-group">
+                        <label for="email">Work Email</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" placeholder="partner@company.com" required autocomplete="email">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                            <i class="fas fa-lock"></i>
+                            <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        Sign In <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    Don't have an account? <a href="wholesalers.html">Request access</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        function handleLogin(event) {
+            // Prevent actual form submission since this is purely front-end
+            event.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Authenticating...';
+            btn.style.opacity = '0.8';
+            btn.style.cursor = 'not-allowed';
+            
+            // Simulate network request context
+            setTimeout(() => {
+                alert('Login Successful! Redirecting to Dashboard...');
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                // In a real app: window.location.href = 'dashboard.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

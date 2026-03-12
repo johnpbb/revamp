@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Hotels & Properties | Pacific Bedbank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        :root {
+            --brand-blue: #0ea5e9;
+            --brand-green: #22c55e;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Container & Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline-blue {
+            border: 2px solid var(--brand-blue);
+            color: var(--brand-blue);
+            background: transparent;
+        }
+
+        .btn-outline-blue:hover {
+            background: var(--brand-blue);
+            color: #fff;
+        }
+
+        .btn-green {
+            background-color: var(--brand-green);
+            color: #fff;
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-blue {
+            background-color: var(--brand-blue);
+            color: #fff;
+        }
+        
+        .btn-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+            background: var(--bg-secondary);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 500;
+        }
+
+        /* --- General Layout --- */
+        .page-section {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--brand-green);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- How It Works Steps --- */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: var(--glass-border);
+            z-index: 1;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-primary);
+            border: 2px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-green);
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.1);
+        }
+
+        .step-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .step-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Partner Logos --- */
+        .partners {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            background: var(--bg-secondary);
+        }
+
+        .partners h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 40px;
+        }
+
+        .logo-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            opacity: 0.4;
+            filter: grayscale(100%);
+        }
+
+        .logo-grid h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--glass-border);
+            background: var(--bg-primary);
+        }
+        
+        .footer-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-logo {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* --- Modal Overrides for Light Mode --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close { position: absolute; top: 20px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
+        .modal-close:hover { color: var(--brand-blue); }
+        .modal-header { text-align: center; margin-bottom: 30px; }
+        .modal-header h2 { color: var(--text-main); font-size: 1.8rem; margin-bottom: 10px; }
+        .modal-header p { color: var(--text-muted); }
+        
+        #loginForm input {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        
+        #loginForm input:focus { border-color: var(--brand-blue); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .steps-container { flex-direction: column; gap: 50px; }
+            .steps-container::before { display: none; }
+            .footer-layout { flex-direction: column; gap: 20px; }
+        }
+</head>
+
+<body>
+
+    <div class="bg-texture"></div>
+
+    <div class="container">
+    <nav class="container">
+        <a href="index.html" class="logo"><img src="assets/LogoPBB-1.png" alt="Pacific Bedbank"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="hotels.html">For Hotels</a>
+            <a href="wholesalers.html">For Wholesalers</a>
+            <a href="technology.html">Platform</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn-outline-blue login-trigger" style="margin-left: 30px;">PARTNER LOGIN</a>
+        </div>
+    </nav>
+
+        <section class="hero">
+            <p class="eyebrow" style="color: var(--brand-green); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 0.9rem; margin-bottom: 15px;">The Supplier Journey</p>
+            <h1>Effortless B2B Distribution<br>for Pacific Properties.</h1>
+            <p>Stop managing wholesale allocations via spreadsheets and emails. Connect your property to a global network of buyers with live inventory, automated rate sync, and secure B2B payments.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-green">Register Your Property</a>
+                <a href="contact.html" class="btn btn-outline-blue">Talk to our Supplier Team</a>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="section-title">
+                <h2>Built to simplify your daily operations.</h2>
+                <p>Designed specifically to solve the distribution challenges of Pacific properties.</p>
+            </div>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Total Rate Control</h3>
+                    <p>Manage your net rates, dynamic pricing, and promotional offers from one centralized dashboard. Always stay in control of your yield.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync"></i>
+                    <h3>Seamless PMS/Channel Manager Sync</h3>
+                    <p>Our robust system integrates directly with your existing tech stack. When a room is booked, your inventory updates instantly everywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h3>Zero Manual Interventions</h3>
+                    <p>Eliminate the risk of overbookings and the headache of manual stop-sells. Let our automated infrastructure handle the heavy lifting.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Three simple steps to unlock global B2B reach without the complexity.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Connect</h3>
+                    <p>Integrate your Channel Manager or use our intuitive and fast extranet dashboard to load your property.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Contract</h3>
+                    <p>Load your B2B net rates, define your cancellation policies, and set your wholesale terms securely.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Distribute</h3>
+                    <p>Your live availability is instantly broadcast to our vetted network of global travel agents and wholesalers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners">
+            <div class="container">
+                <h2>Proudly supporting properties across the Pacific.</h2>
+                <div class="logo-grid">
+                    <h3>INTERCONTINENTAL</h3>
+                    <h3>SHANGRI-LA</h3>
+                    <h3>OUTRIGGER</h3>
+                    <h3>SOFITEL</h3>
+                    <h3>CASTAWAY</h3>
+                </div>
+            </div>
+        </section>
+
+    <footer>
+        <div class="container footer-layout">
+            <div class="footer-links">
+                <a href="#">Legal</a>
+                <a href="products.html">Features</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-logo">
+                Member of GBB Network
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeLoginModal"><i class="fas fa-times"></i></div>
+            <div class="modal-header">
+                <h2>Partner Login</h2>
+                <p>Access your B2B account</p>
+            </div>
+            <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                    <label for="loginEmail" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Work Email / Username</label>
+                    <input type="email" id="loginEmail" placeholder="partner@company.com" required style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='var(--neon-green)'" onblur="this.style.borderColor='var(--glass-border)'">
+                </div>
+                <div>
+                    <label for="loginPassword" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='var(--neon-green)'" onblur="this.style.borderColor='var(--glass-border)'">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer;"><input type="checkbox" style="accent-color: var(--neon-green);"> Remember Me</label>
+                    <a href="#" style="color: var(--neon-green); text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-top: 10px; font-size: 1.05rem;">Login to System</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginTriggers = document.querySelectorAll('.login-trigger');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+
+        const toggleModal = (modal, show) => {
+            if (show) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('active');
+                setTimeout(() => modal.style.display = 'none', 300);
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        loginTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleModal(loginModal, true);
+            });
+        });
+
+        closeLoginModal.addEventListener('click', () => toggleModal(loginModal, false));
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) toggleModal(loginModal, false);
+        });
+    </script>
+</body>
+
+</html>

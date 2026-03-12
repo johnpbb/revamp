@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Pacific B2B Travel Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --brand-blue: #0ea5e9;
+            --brand-green: #22c55e;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Container & Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline-blue {
+            border: 2px solid var(--brand-blue);
+            color: var(--brand-blue);
+            background: transparent;
+        }
+
+        .btn-outline-blue:hover {
+            background: var(--brand-blue);
+            color: var(--text-main);
+        }
+
+        .btn-green {
+            background-color: var(--brand-green);
+            color: var(--text-main);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-blue {
+            background-color: var(--brand-blue);
+            color: var(--text-main);
+        }
+        
+        .btn-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        /* --- Contact Content --- */
+        .page-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #b0b3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 60px 0;
+            align-items: start;
+        }
+
+        .contact-form-container {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--brand-green);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            padding-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(146, 193, 63, 0.1);
+            border: 1px solid rgba(146, 193, 63, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--brand-green);
+            color: var(--brand-green);
+            transform: translateY(-3px);
+        }
+
+        .faq-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--brand-green);
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-options {
+            display: grid;
+            gap: 20px;
+        }
+
+        .register-option {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .register-option:hover {
+            border-color: var(--brand-green);
+            background: rgba(170, 255, 0, 0.05);
+            transform: translateX(10px);
+        }
+
+        .register-option i {
+            font-size: 2rem;
+            color: var(--brand-green);
+        }
+
+        footer {
+            padding: 60px 0 20px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+
+            .contact-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-texture"></div>
+
+    <div class="container">
+        <nav class="container">
+        <a href="index.html" class="logo"><img src="assets/LogoPBB-1.png" alt="Pacific Bedbank"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="hotels.html">For Hotels</a>
+            <a href="wholesalers.html">For Wholesalers</a>
+            <a href="technology.html">Platform</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn-outline-blue login-trigger" style="margin-left: 30px;">PARTNER LOGIN</a>
+        </div>
+    </nav>
+
+        <header class="page-header">
+            <h1>Get in Touch</h1>
+            <p>Our team is here to help you scale your travel business across the Pacific. Reach out for support,
+                partnerships, or a custom demo.</p>
+        </header>
+
+        <section class="contact-grid">
+            <div class="contact-form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="demo">Request a Demo</option>
+                            <option value="support">Technical Support</option>
+                            <option value="partnership">Partnership Inquiry</option>
+                            <option value="billing">Billing Questions</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Tell us how we can help..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-green" style="width: 100%; padding: 15px;">Send
+                        Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Our Headquarters</h3>
+                        <p>Level 4, Pacific House, Butt Street<br>Suva, Fiji Islands</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Email Us</h3>
+                        <p>General: hello@pacificb2b.travel<br>Support: support@pacificb2b.travel</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Call Us</h3>
+                        <p>Main Office: +679 331 4000<br>Sales: +679 331 4001</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 8:30 AM - 5:00 PM (FJT)<br>Weekend: Emergency Support Only</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h3>Follow Our Journey</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How fast can we get started?</h3>
+                    <p>Onboarding typically takes 48-72 hours. Once your account is verified, you can start loading
+                        inventory or booking immediately.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you support regional currencies?</h3>
+                    <p>Yes, we support FJD, AUD, NZD, USD, TOP, and VUV with real-time exchange rate synchronization.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is there a setup fee?</h3>
+                    <p>We have flexible plans ranging from zero-setup commission-based models to enterprise fixed-fee
+                        solutions.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I integrate my existing PMS?</h3>
+                    <p>Absolutely. We have a robust API and pre-built connectors for most major Property Management
+                        Systems used in the Pacific.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+        <div class="container footer-layout">
+            <div class="footer-links">
+                <a href="#">Legal</a>
+                <a href="products.html">Features</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-logo">
+                Member of GBB Network
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeModal"><i class="fas fa-times"></i></div>
+            <div class="modal-header">
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Join Pacific B2B</h2>
+                <p style="color: var(--text-muted);">Select your business type to get started</p>
+            </div>
+            <div class="register-options">
+                <a href="#" class="register-option">
+                    <i class="fas fa-user-tie"></i>
+                    <div class="option-text">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Register as an Agent</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Access exclusive inventory and manage
+                            bookings.</p>
+                    </div>
+                </a>
+                <a href="#" class="register-option">
+                    <i class="fas fa-hotel"></i>
+                    <div class="option-text">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Register as a Hotel</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">List your property and reach regional
+                            agents.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+        <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeLoginModal"><i class="fas fa-times"></i></div>
+            <div class="modal-header">
+                <h2>Partner Login</h2>
+                <p>Access your B2B account</p>
+            </div>
+            <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                    <label for="loginEmail" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Work Email / Username</label>
+                    <input type="email" id="loginEmail" placeholder="partner@company.com" required>
+                </div>
+                <div>
+                    <label for="loginPassword" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer;"><input type="checkbox" style="accent-color: var(--brand-blue);"> Remember Me</label>
+                    <a href="#" style="color: var(--brand-blue); text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-blue" style="width: 100%; padding: 15px; margin-top: 10px; font-size: 1.05rem;">Login to System</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const registerTriggers = document.querySelectorAll('.register-trigger');
+        const registerModal = document.getElementById('registerModal');
+        const closeModal = document.getElementById('closeModal');
+
+        const loginTriggers = document.querySelectorAll('.login-trigger');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+
+        const toggleModal = (modal, show) => {
+            if (show) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('active');
+                setTimeout(() => modal.style.display = 'none', 300);
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        registerTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleModal(registerModal, true);
+            });
+        });
+
+        loginTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleModal(loginModal, true);
+            });
+        });
+
+        closeModal.addEventListener('click', () => toggleModal(registerModal, false));
+        closeLoginModal.addEventListener('click', () => toggleModal(loginModal, false));
+
+        registerModal.addEventListener('click', (e) => {
+            if (e.target === registerModal) toggleModal(registerModal, false);
+        });
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) toggleModal(loginModal, false);
+        });
+
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            // Simulate sending
+            setTimeout(() => {
+                btn.innerText = 'Message Sent!';
+                btn.style.backgroundColor = '#4CAF50';
+                e.target.reset();
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>
