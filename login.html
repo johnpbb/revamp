@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,10 @@
             --brand-blue-transparent: rgba(0, 126, 196, 0.15);
             --brand-blue-hover: #0066a2;
             --brand-green: #8cc63f;
-            
+
             --bg-main: #f8f9fa;
             --bg-white: #ffffff;
-            
+
             --slate-50: #f8fafc;
             --slate-100: #f1f5f9;
             --slate-200: #e2e8f0;
@@ -29,17 +30,22 @@
 
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            
+
             --radius-md: 0.5rem;
             --radius-lg: 0.75rem;
             --radius-xl: 1rem;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-main); 
-            color: var(--slate-800); 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--slate-800);
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
             display: flex;
@@ -56,15 +62,17 @@
             display: none;
             width: 50%;
             background: linear-gradient(135deg, rgba(0, 126, 196, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%),
-                        url('https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+                url('https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
             position: relative;
             align-items: center;
             justify-content: center;
             padding: 4rem;
         }
-        
+
         @media (min-width: 1024px) {
-            .login-visual { display: flex; }
+            .login-visual {
+                display: flex;
+            }
         }
 
         .visual-content {
@@ -101,10 +109,25 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .glass-badge i { font-size: 1.5rem; color: var(--brand-green); }
-        .glass-badge div { display: flex; flex-direction: column; }
-        .glass-badge .title { font-weight: 700; font-size: 1rem; }
-        .glass-badge .sub { font-size: 0.875rem; color: rgba(255, 255, 255, 0.7); }
+        .glass-badge i {
+            font-size: 1.5rem;
+            color: var(--brand-green);
+        }
+
+        .glass-badge div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glass-badge .title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .glass-badge .sub {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
 
         /* RIGHT SIDE - FORM */
         .login-form-container {
@@ -118,7 +141,9 @@
         }
 
         @media (min-width: 1024px) {
-            .login-form-container { width: 50%; }
+            .login-form-container {
+                width: 50%;
+            }
         }
 
         .form-wrapper {
@@ -130,9 +155,9 @@
             display: block;
             margin-bottom: 3rem;
         }
-        
+
         .brand-logo img {
-            height: 3rem;
+            height: 120px;
             width: auto;
         }
 
@@ -177,7 +202,8 @@
             align-items: center;
         }
 
-        .input-wrapper i.fa-envelope, .input-wrapper i.fa-lock {
+        .input-wrapper i.fa-envelope,
+        .input-wrapper i.fa-lock {
             position: absolute;
             left: 1rem;
             color: var(--slate-400);
@@ -207,7 +233,8 @@
             box-shadow: 0 0 0 4px var(--brand-blue-transparent);
         }
 
-        .input-wrapper input:focus ~ i.fa-envelope, .input-wrapper input:focus ~ i.fa-lock {
+        .input-wrapper input:focus~i.fa-envelope,
+        .input-wrapper input:focus~i.fa-lock {
             color: var(--brand-blue);
         }
 
@@ -306,22 +333,24 @@
             text-decoration: none;
             margin-left: 0.25rem;
         }
-        
+
         .form-footer a:hover {
             color: var(--brand-blue);
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
 
     <div class="login-layout">
-        
+
         <!-- Left Side: Visual -->
         <div class="login-visual">
             <div class="visual-content">
                 <h1>Seamless Distribution.<br>Global Reach.</h1>
-                <p>The unified B2B platform connecting top-tier Pacific properties with the world's leading travel agents.</p>
+                <p>The unified B2B platform connecting top-tier Pacific properties with the world's leading travel
+                    agents.</p>
                 <div class="glass-badge">
                     <i class="fas fa-shield-alt"></i>
                     <div>
@@ -335,9 +364,10 @@
         <!-- Right Side: Form -->
         <div class="login-form-container">
             <div class="form-wrapper">
-                
+
                 <a href="index.html" class="brand-logo">
-                    <img src="assets/LogoPBB-1.png" alt="Pacificbedbank Logo" onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/007ec4?text=Pacificbedbank&font=montserrat';">
+                    <img src="assets/LogoPBB-1.png" alt="Pacificbedbank Logo"
+                        onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/007ec4?text=Pacificbedbank&font=montserrat';">
                 </a>
 
                 <div class="form-header">
@@ -346,11 +376,12 @@
                 </div>
 
                 <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
-                    
+
                     <div class="input-group">
                         <label for="email">Work Email</label>
                         <div class="input-wrapper">
-                            <input type="email" id="email" placeholder="partner@company.com" required autocomplete="email">
+                            <input type="email" id="email" placeholder="partner@company.com" required
+                                autocomplete="email">
                             <i class="fas fa-envelope"></i>
                         </div>
                     </div>
@@ -358,9 +389,11 @@
                     <div class="input-group">
                         <label for="password">Password</label>
                         <div class="input-wrapper">
-                            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                            <input type="password" id="password" placeholder="••••••••" required
+                                autocomplete="current-password">
                             <i class="fas fa-lock"></i>
-                            <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Toggle password visibility">
+                            <button type="button" class="password-toggle" onclick="togglePassword()"
+                                aria-label="Toggle password visibility">
                                 <i class="fas fa-eye" id="toggleIcon"></i>
                             </button>
                         </div>
@@ -391,7 +424,7 @@
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const toggleIcon = document.getElementById('toggleIcon');
-            
+
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 toggleIcon.classList.remove('fa-eye');
@@ -406,15 +439,15 @@
         function handleLogin(event) {
             // Prevent actual form submission since this is purely front-end
             event.preventDefault();
-            
+
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
-            
+
             // Show loading state
             btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Authenticating...';
             btn.style.opacity = '0.8';
             btn.style.cursor = 'not-allowed';
-            
+
             // Simulate network request context
             setTimeout(() => {
                 alert('Login Successful! Redirecting to Dashboard...');
@@ -426,4 +459,5 @@
         }
     </script>
 </body>
+
 </html>

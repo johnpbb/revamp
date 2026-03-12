@@ -1,441 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Hotels & Properties | Pacific Bedbank</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>For Hotels & Properties | Pacific B2B Travel Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <style>
         :root {
-            --brand-blue: #0ea5e9;
-            --brand-green: #22c55e;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --glass-border: rgba(0, 0, 0, 0.05);
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --border-radius: 16px;
+            --brand-blue: #007ec4;
+            --brand-blue-transparent: rgba(0, 126, 196, 0.15);
+            --brand-green: #8cc63f;
+            --brand-green-transparent: rgba(140, 198, 63, 0.15);
+            
+            --bg-main: #f8f9fa;
+            --bg-white: #ffffff;
+            
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--slate-800); line-height: 1.5; -webkit-font-smoothing: antialiased;}
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; transition: all 0.3s ease; }
+        button { cursor: pointer; border: none; outline: none; transition: all 0.3s ease; font-family: inherit;}
 
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
-        /* --- Container & Layout --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- Navbar --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            vertical-align: middle;
-        }
-
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 30px;
-            transition: 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--brand-blue);
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 48px;
-            border: 1px solid transparent;
-        }
-
-        .btn-outline-blue {
-            border: 2px solid var(--brand-blue);
-            color: var(--brand-blue);
-            background: transparent;
-        }
-
-        .btn-outline-blue:hover {
-            background: var(--brand-blue);
-            color: #fff;
-        }
-
-        .btn-green {
-            background-color: var(--brand-green);
-            color: #fff;
-        }
-
-        .btn-green:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
-        }
-
-        .btn-blue {
-            background-color: var(--brand-blue);
-            color: #fff;
-        }
+        /* HEADER */
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); z-index: 50; border-bottom: 1px solid var(--slate-100); box-shadow: var(--shadow-sm); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 5rem; }
+        .logo img { height: 80px; width: auto; }
         
-        .btn-blue:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 80px 0 120px;
-            text-align: center;
-            position: relative;
-            background: var(--bg-secondary);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--text-main);
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-weight: 500;
-        }
-
-        /* --- General Layout --- */
-        .page-section {
-            padding: 100px 0;
-            background: var(--bg-primary);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .card-grid {
-            display: grid;
-            gap: 30px;
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .feature-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--brand-green);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* --- How It Works Steps --- */
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            position: relative;
-            margin-top: 40px;
-        }
-
-        .steps-container::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 50px;
-            right: 50px;
-            height: 2px;
-            background: var(--glass-border);
-            z-index: 1;
-        }
-
-        .step-item {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-primary);
-            border: 2px solid var(--brand-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--brand-green);
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.1);
-        }
-
-        .step-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .step-item p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* --- Partner Logos --- */
-        .partners {
-            text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            background: var(--bg-secondary);
-        }
-
-        .partners h2 {
-            font-size: 1.8rem;
-            color: var(--text-main);
-            margin-bottom: 40px;
-        }
-
-        .logo-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 50px;
-            opacity: 0.4;
-            filter: grayscale(100%);
-        }
-
-        .logo-grid h3 {
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid var(--glass-border);
-            background: var(--bg-primary);
-        }
+        .desktop-nav { display: none; gap: 2rem; }
+        .desktop-nav a { color: var(--slate-600); font-weight: 500; }
+        .desktop-nav a.active { color: var(--brand-blue); font-weight: 700; }
+        .desktop-nav a:hover { color: var(--brand-blue); }
         
-        .footer-layout {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .header-actions { display: none; align-items: center; }
+        .btn-outline { padding: 0.6rem 1.7rem; border-radius: var(--radius-full); font-weight: 600; border: 2px solid var(--brand-blue); color: var(--brand-blue); background: transparent; }
+        .btn-outline:hover { background-color: var(--brand-blue); color: #fff; }
+
+        .mobile-menu-btn { display: flex; color: var(--slate-600); font-size: 1.5rem; background: transparent;}
         
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-right: 30px;
-            font-size: 0.95rem;
-        }
-        
-        .footer-logo {
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
+        @media(min-width: 768px) {
+            .desktop-nav { display: flex; }
+            .header-actions { display: flex; }
+            .mobile-menu-btn { display: none; }
         }
 
-        /* --- Modal Overrides for Light Mode --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        /* HERO SECTION */
+        .hero { position: relative; padding: 12rem 0 8rem; text-align: center; background: var(--slate-50); border-bottom: 1px solid var(--slate-200); }
+        .hero-content { position: relative; z-index: 10; max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+        .hero .eyebrow { color: var(--brand-green); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; font-size: 0.875rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-size: 3rem; font-weight: 800; color: var(--slate-900); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; color: var(--slate-700); max-width: 48rem; margin: 0 auto 2.5rem; line-height: 1.6; }
         
-        .modal-overlay.active { display: flex; opacity: 1; }
+        .hero-btns { display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center; }
+        .btn-solid-green { background-color: var(--brand-green); color: white; padding: 1rem 2rem; border-radius: var(--radius-full); font-weight: 700; font-size: 1rem; box-shadow: var(--shadow-lg); display: inline-flex; align-items: center; justify-content: center; }
+        .btn-solid-green:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); opacity: 0.95; }
+        
+        .btn-outline-blue { padding: 1rem 2rem; border-radius: var(--radius-full); font-weight: 700; border: 2px solid var(--brand-blue); color: var(--brand-blue); background: transparent; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .btn-outline-blue:hover { background-color: var(--brand-blue); color: #fff; transform: translateY(-4px); box-shadow: var(--shadow-xl); }
 
-        .modal-content {
-            background: var(--bg-primary);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 40px;
-            border-radius: 24px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            box-shadow: var(--card-shadow);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+        @media(min-width: 640px) {
+            .hero-btns { flex-direction: row; }
         }
-        
-        .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-close { position: absolute; top: 20px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
-        .modal-close:hover { color: var(--brand-blue); }
-        .modal-header { text-align: center; margin-bottom: 30px; }
-        .modal-header h2 { color: var(--text-main); font-size: 1.8rem; margin-bottom: 10px; }
-        .modal-header p { color: var(--text-muted); }
-        
-        #loginForm input {
-            width: 100%;
-            background: var(--bg-secondary);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            border-radius: 12px;
-            padding: 15px;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.3s;
+        @media(min-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .hero p { font-size: 1.5rem; }
         }
-        
-        #loginForm input:focus { border-color: var(--brand-blue); }
+        @media(min-width: 1024px) {
+            .hero h1 { font-size: 4.5rem; }
+            .hero { padding: 14rem 0 10rem; }
+        }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .card-grid { grid-template-columns: 1fr; }
-            .steps-container { flex-direction: column; gap: 50px; }
-            .steps-container::before { display: none; }
-            .footer-layout { flex-direction: column; gap: 20px; }
+        /* GENERAL LAYOUT */
+        .page-section { padding: 6rem 0; background: var(--bg-white); }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; font-weight: 800; color: var(--slate-900); margin-bottom: 1rem; line-height: 1.2; }
+        .section-title p { color: var(--slate-600); font-size: 1.125rem; max-width: 48rem; margin: 0 auto; line-height: 1.6; }
+
+        .card-grid { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+        @media(min-width: 768px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .feature-box { background: var(--bg-white); border: 1px solid var(--slate-100); padding: 2.5rem; border-radius: var(--radius-3xl); box-shadow: var(--shadow-xl); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; gap: 1.5rem; }
+        .feature-box:hover { transform: translateY(-5px); box-shadow: var(--shadow-2xl); }
+        .feature-box i { font-size: 2.5rem; color: var(--brand-green); }
+        .feature-box h3 { font-size: 1.5rem; font-weight: 700; color: var(--slate-900); }
+        .feature-box p { color: var(--slate-600); line-height: 1.625; }
+
+        /* HOW IT WORKS STEPS */
+        .steps-container { display: flex; flex-direction: column; gap: 3rem; position: relative; margin-top: 3rem; }
+        @media(min-width: 768px) {
+            .steps-container { flex-direction: row; gap: 2rem; }
+            .steps-container::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: var(--slate-200); z-index: 1; }
         }
+
+        .step-item { flex: 1; text-align: center; position: relative; z-index: 2; }
+        .step-number { width: 5rem; height: 5rem; background: var(--bg-white); border: 4px solid var(--brand-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: var(--brand-green); margin: 0 auto 1.5rem; box-shadow: var(--shadow-lg); }
+        .step-item h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--slate-900); }
+        .step-item p { color: var(--slate-600); font-size: 1rem; line-height: 1.6; }
+
+        /* PARTNER LOGOS */
+        .partners { text-align: center; padding: 5rem 0; border-top: 1px solid var(--slate-200); border-bottom: 1px solid var(--slate-200); background: var(--slate-50); }
+        .partners h2 { font-size: 1.875rem; font-weight: 700; color: var(--slate-900); margin-bottom: 3rem; }
+        .logo-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 4rem; opacity: 0.5; filter: grayscale(100%); transition: opacity 0.3s; }
+        .logo-grid:hover { opacity: 0.8; }
+        .logo-grid h3 { font-size: 1.25rem; font-weight: 800; color: var(--slate-600); }
+
+        /* FOOTER */
+        footer { background: var(--slate-900); color: var(--bg-white); padding: 4rem 0; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+        
+        .footer-brand img { height: 120px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); }
+        .footer-brand h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .footer-brand p { color: var(--slate-400); font-size: 0.875rem; }
+
+        .footer-heading { font-weight: 700; margin-bottom: 1rem; color: var(--slate-300); font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-links a { color: var(--slate-400); font-size: 0.875rem; }
+        .footer-links a:hover { color: var(--bg-white); }
+        
+        .network-box { background: var(--slate-800); padding: 1rem; border-radius: var(--radius-xl); border: 1px solid var(--slate-700); }
+        .network-box p.top { font-size: 0.75rem; color: var(--slate-400); margin-bottom: 0.5rem; }
+        .network-box p.mid { font-weight: 700; color: var(--bg-white); margin-bottom: 0.5rem; }
+        .network-links { display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--slate-300); }
+        .network-links a { color: inherit; }
+        .network-links a:hover { color: var(--bg-white); }
+        
+        .footer-bottom { border-top: 1px solid var(--slate-800); padding-top: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--slate-500); gap: 1rem; }
+        .footer-bottom-links { display: flex; gap: 1rem; }
+        .footer-bottom-links a { color: inherit; }
+        .footer-bottom-links a:hover { color: var(--bg-white); }
+
+        @media(min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+            .footer-bottom { flex-direction: row; }
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <div class="bg-texture"></div>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/LogoPBB-1.png" alt="Pacificbedbank Logo"
+                        onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/007ec4?text=Pacificbedbank&font=montserrat';">
+                </a>
+            </div>
 
-    <div class="container">
-    <nav class="container">
-        <a href="index.html" class="logo"><img src="assets/LogoPBB-1.png" alt="Pacific Bedbank"></a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="hotels.html">For Hotels</a>
-            <a href="wholesalers.html">For Wholesalers</a>
-            <a href="technology.html">Platform</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="#" class="btn btn-outline-blue login-trigger" style="margin-left: 30px;">PARTNER LOGIN</a>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="hotels.html" class="active">For Hotels</a>
+                <a href="wholesalers.html">For Wholesalers</a>
+                <a href="technology.html">Platform</a>
+                <a href="about.html">About</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="btn-outline">PARTNER LOGIN</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="alert('Mobile menu toggled')">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </nav>
+    </header>
 
-        <section class="hero">
-            <p class="eyebrow" style="color: var(--brand-green); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 0.9rem; margin-bottom: 15px;">The Supplier Journey</p>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">The Supplier Journey</span>
             <h1>Effortless B2B Distribution<br>for Pacific Properties.</h1>
             <p>Stop managing wholesale allocations via spreadsheets and emails. Connect your property to a global network of buyers with live inventory, automated rate sync, and secure B2B payments.</p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="btn btn-green">Register Your Property</a>
-                <a href="contact.html" class="btn btn-outline-blue">Talk to our Supplier Team</a>
+            <div class="hero-btns">
+                <a href="#" class="btn-solid-green">Register Your Property</a>
+                <a href="contact.html" class="btn-outline-blue">Talk to our Supplier Team</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="page-section">
+    <section class="page-section">
+        <div class="container">
             <div class="section-title">
                 <h2>Built to simplify your daily operations.</h2>
                 <p>Designed specifically to solve the distribution challenges of Pacific properties.</p>
             </div>
             <div class="card-grid">
-                <div class="feature-card">
+                <div class="feature-box">
                     <i class="fas fa-sliders-h"></i>
                     <h3>Total Rate Control</h3>
                     <p>Manage your net rates, dynamic pricing, and promotional offers from one centralized dashboard. Always stay in control of your yield.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-box">
                     <i class="fas fa-sync"></i>
                     <h3>Seamless PMS/Channel Manager Sync</h3>
                     <p>Our robust system integrates directly with your existing tech stack. When a room is booked, your inventory updates instantly everywhere.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-box">
                     <i class="fas fa-hand-sparkles"></i>
                     <h3>Zero Manual Interventions</h3>
                     <p>Eliminate the risk of overbookings and the headache of manual stop-sells. Let our automated infrastructure handle the heavy lifting.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="page-section">
+    <section class="page-section" style="background: var(--slate-50); border-top: 1px solid var(--slate-200);">
+        <div class="container">
             <div class="section-title">
                 <h2>How It Works</h2>
                 <p>Three simple steps to unlock global B2B reach without the complexity.</p>
@@ -457,88 +252,69 @@
                     <p>Your live availability is instantly broadcast to our vetted network of global travel agents and wholesalers.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="partners">
-            <div class="container">
-                <h2>Proudly supporting properties across the Pacific.</h2>
-                <div class="logo-grid">
-                    <h3>INTERCONTINENTAL</h3>
-                    <h3>SHANGRI-LA</h3>
-                    <h3>OUTRIGGER</h3>
-                    <h3>SOFITEL</h3>
-                    <h3>CASTAWAY</h3>
-                </div>
+    <section class="partners">
+        <div class="container">
+            <h2>Proudly supporting properties across the Pacific.</h2>
+            <div class="logo-grid">
+                <h3>INTERCONTINENTAL</h3>
+                <h3>SHANGRI-LA</h3>
+                <h3>OUTRIGGER</h3>
+                <h3>SOFITEL</h3>
+                <h3>CASTAWAY</h3>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <!-- FOOTER -->
     <footer>
-        <div class="container footer-layout">
-            <div class="footer-links">
-                <a href="#">Legal</a>
-                <a href="products.html">Features</a>
-                <a href="contact.html">Contact</a>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <img src="assets/LogoPBB-1.png" alt="Pacificbedbank Logo">
+                    <p>The premier B2B bedbank connecting the Pacific to the world.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">PRODUCT</h4>
+                    <ul class="footer-links">
+                        <li><a href="hotels.html">For Hotels</a></li>
+                        <li><a href="wholesalers.html">For Wholesalers</a></li>
+                        <li><a href="login.html">Partner Login</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">SUPPORT & TECH</h4>
+                    <ul class="footer-links">
+                        <li><a href="technology.html">API Documentation</a></li>
+                        <li><a href="#">System Status</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">OUR NETWORK</h4>
+                    <div class="network-box">
+                        <p class="top">Pacific Bedbank is product of</p>
+                        <p class="mid">Global Bedbank PTE Limited</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="footer-logo">
-                Member of GBB Network
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pacificbedbank. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
-    
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-close" id="closeLoginModal"><i class="fas fa-times"></i></div>
-            <div class="modal-header">
-                <h2>Partner Login</h2>
-                <p>Access your B2B account</p>
-            </div>
-            <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
-                <div>
-                    <label for="loginEmail" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Work Email / Username</label>
-                    <input type="email" id="loginEmail" placeholder="partner@company.com" required style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='var(--neon-green)'" onblur="this.style.borderColor='var(--glass-border)'">
-                </div>
-                <div>
-                    <label for="loginPassword" style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">Password</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••" required style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='var(--neon-green)'" onblur="this.style.borderColor='var(--glass-border)'">
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
-                    <label style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer;"><input type="checkbox" style="accent-color: var(--neon-green);"> Remember Me</label>
-                    <a href="#" style="color: var(--neon-green); text-decoration: none;">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-top: 10px; font-size: 1.05rem;">Login to System</button>
-            </form>
-        </div>
-    </div>
 
-    <script>
-        const loginTriggers = document.querySelectorAll('.login-trigger');
-        const loginModal = document.getElementById('loginModal');
-        const closeLoginModal = document.getElementById('closeLoginModal');
-
-        const toggleModal = (modal, show) => {
-            if (show) {
-                modal.style.display = 'flex';
-                setTimeout(() => modal.classList.add('active'), 10);
-                document.body.style.overflow = 'hidden';
-            } else {
-                modal.classList.remove('active');
-                setTimeout(() => modal.style.display = 'none', 300);
-                document.body.style.overflow = 'auto';
-            }
-        };
-
-        loginTriggers.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleModal(loginModal, true);
-            });
-        });
-
-        closeLoginModal.addEventListener('click', () => toggleModal(loginModal, false));
-        loginModal.addEventListener('click', (e) => {
-            if (e.target === loginModal) toggleModal(loginModal, false);
-        });
-    </script>
 </body>
-
 </html>
